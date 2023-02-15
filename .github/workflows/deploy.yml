@@ -24,7 +24,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Copy ${{ inputs.provider }} provider assets
+      # - name: Copy ${{ inputs.provider }} provider assets
       - uses: prewk/s3-cp-action@v2
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
@@ -32,6 +32,7 @@ jobs:
           source: 's3://passenger-demo-providers/${{ inputs.provider }}'
           dest: 'src/assets'
           flags: --recursive
+
       - name: build
         run: |
           npm i
