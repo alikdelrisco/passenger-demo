@@ -12,7 +12,7 @@ on:
         - Calgary
 
 jobs:
-  deploy-${{ inputs.provider }} :
+  deploy-vercel:
     environment: production
     runs-on: ubuntu-latest
     steps:
