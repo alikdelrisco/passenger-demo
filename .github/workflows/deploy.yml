@@ -24,12 +24,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Copy ${{ inputs.provider }} provider assets
+      # - name: Copy ${{ inputs.provider }} provider assets
       - uses: prewk/s3-cp-action@v2
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
-          source: 's3://passenger-demo-providers/'${{ inputs.provider }}'/'
+          source: 's3://passenger-demo-providers/${{ inputs.provider }}'
           dest: './src/assets/'
       - name: build
         run: |
