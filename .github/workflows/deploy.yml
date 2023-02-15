@@ -2,7 +2,7 @@ name: deploy passenger demo
 on: workflow_dispatch
 
 jobs:
-  angular:
+  deploy-vercel:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,12 +14,10 @@ jobs:
             ${{ runner.os }}-node-
       - name: build
         run: |
-          ls -a
           npm i
           npx ng build
 
-      - uses: ./
-        id: vercel-action-production
+      - uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
