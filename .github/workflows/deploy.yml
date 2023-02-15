@@ -13,10 +13,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: build
-      run: |
-        ls
-        npm i
-        npx ng build --prod
+        run: |
+          ls -a
+          npm i
+          npx ng build --prod
 
       - uses: ./
         id: vercel-action-production
