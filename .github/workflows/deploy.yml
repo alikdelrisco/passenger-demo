@@ -16,7 +16,7 @@ jobs:
         run: |
           ls -a
           npm i
-          npx ng build --prod
+          npx ng build
 
       - uses: ./
         id: vercel-action-production
