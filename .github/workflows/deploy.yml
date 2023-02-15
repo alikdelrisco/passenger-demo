@@ -1,5 +1,15 @@
 name: deploy passenger demo
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    provider:
+      logLevel:
+        description: 'Select Provider'
+        required: true
+        default: 'Rideco'
+        type: choice
+        options:
+        - Rideco
+        - Calgary
 
 jobs:
   deploy-vercel:
