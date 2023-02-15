@@ -3,13 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       provider:
-        description: 'Select Provider'
-        required: true
+        description: 'Set provider path'
+        required: false
         default: 'Rideco'
-        type: choice
-        options:
-        - Rideco
-        - Calgary
+        type: string
 
 jobs:
   deploy-vercel:
@@ -24,7 +21,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # - name: Copy ${{ inputs.provider }} provider assets
       - uses: prewk/s3-cp-action@v2
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
@@ -37,11 +33,6 @@ jobs:
         run: |
           npm i
           npx ng build
-
-      - name: check path
-        run: |
-          cd src/assets
-          ls -a
 
       - uses: amondnet/vercel-action@v20
         with:
