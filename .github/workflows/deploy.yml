@@ -1,8 +1,8 @@
 name: deploy passenger demo
 on:
   workflow_dispatch:
-    provider:
-      logLevel:
+    inputs:
+      provider:
         description: 'Select Provider'
         required: true
         default: 'Rideco'
@@ -12,7 +12,7 @@ on:
         - Calgary
 
 jobs:
-  deploy-vercel:
+  deploy-${{ inputs.provider }} :
     environment: production
     runs-on: ubuntu-latest
     steps:
